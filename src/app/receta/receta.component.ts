@@ -15,6 +15,9 @@ export class RecetaComponent implements OnInit {
   likes: number;
   isGlutenFree: boolean;
   ingredientes: string[];
+  contIngredientes: number;
+  mostrar: boolean;
+  
 
 
   constructor() {
@@ -26,7 +29,10 @@ export class RecetaComponent implements OnInit {
     this.likes = 34;
     this.isGlutenFree = true;
     this.ingredientes = [ 'Calamares', 'Limon', 'Pan', 'Salsa Ali-oli' ];
-
+    this.contIngredientes = this.ingredientes.length;
+    this.mostrar = false;
+    
+    console.log(this.contIngredientes);
   }
 
   ngOnInit() {
@@ -36,5 +42,10 @@ export class RecetaComponent implements OnInit {
   sumarLike() {
     this.likes++;
     console.log('click en likes');
+  }
+
+  showIngredientes(){
+      this.mostrar=!this.mostrar;
+      
   }
 }

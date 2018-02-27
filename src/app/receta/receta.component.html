@@ -11,11 +11,17 @@
         </p>
 
         <section class="ingredientes">
-          <h4>Ingredientes</h4>
-          <ol>
-            <li *ngFor = "let ingrediente of ingredientes">{{ingrediente}}</li>
-            
-          </ol>
+          <div class="ingredientesHeader">
+            <span class="badge">{{contIngredientes}}</span>
+            <h4>Ingredientes</h4>
+            <span *ngIf="!mostrar" class="ingredientesToggle" (click)="showIngredientes()"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+            <span *ngIf="mostrar" class="ingredientesToggle" (click)="showIngredientes()"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+          </div>
+          <div *ngIf="mostrar" class="listaIngredientes">
+            <ol>
+              <li  *ngFor="let ingrediente of ingredientes">{{ingrediente}}</li>
+            </ol>
+          </div>
         </section>
 
 

@@ -25,11 +25,27 @@ p{
         font-weight: bold;
     }
 
-    h4 {
+    .ingredientesHeader {
         border-top: 2px solid grey;
         border-bottom: 2px solid grey;
         font-size: 1.2em;
         padding: 5px 0;
+
+        h4{
+            display: inline-block;
+        }
+
+        .badge { 
+            float: left;
+            margin-top: 10px;
+        }
+
+        .ingredientesToggle{
+            float: right;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
     }
     
 }
