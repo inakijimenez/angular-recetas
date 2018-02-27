@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{{img}}" alt="{{nombre}}">
+      <div class="caption">
+        <h3>{{nombre}}</h3>
+        <p>{{descripcion | slice:0:20 }}...</p>
+        <p>
+          <span class="cocinero">{{cocinero}}</span>
+          <span class="label label-primary" (click)="sumarLike()">{{likes}} likes</span>
+        </p>
+
+        <section class="ingredientes">
+          <h4>Ingredientes</h4>
+          <ol>
+            <li *ngFor = "let ingrediente of ingredientes">{{ingrediente}}</li>
+            
+          </ol>
+        </section>
+
+
+        <img class="gluten" *ngIf="isGlutenFree" src="\assets\img\gluten_free_icon.png" alt="gluten">
+        <img class="gluten" *ngIf="!isGlutenFree" src="\assets\img\gluten_icon.png" alt="gluten">
+
+      </div>
+    </div>
+  </div>
+</div>
