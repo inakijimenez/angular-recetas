@@ -1,0 +1,1 @@
+export enum Sexo { masculino, femenino, indeterminado}
