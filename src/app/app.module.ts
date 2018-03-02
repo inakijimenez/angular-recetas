@@ -11,6 +11,9 @@ import { PropiedadesComponent } from './propiedades/propiedades.component';
 import { Page404Component } from './page404/page404.component';
 import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ConcesionarioComponent } from './concesionario/concesionario.component';
+import { CocheComponent } from './concesionario/coche/coche.component';
+import { CocheListaComponent } from './concesionario/coche-lista/coche-lista.component';
 
 
 
@@ -21,7 +24,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
     PropiedadesComponent,
     Page404Component,
     HomeComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ConcesionarioComponent,
+    CocheComponent,
+    CocheListaComponent
   ],
   imports: [
     BrowserModule,

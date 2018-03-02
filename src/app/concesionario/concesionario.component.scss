@@ -1,0 +1,17 @@
+ul.lista{
+    padding: 0;
+    li{
+
+        list-style: none;
+        padding: 10px;
+        border: 2px solid grey;
+        background-color: teal;
+        color: white;
+
+        &:hover{
+            color:teal;
+            background-color: white;
+            cursor: pointer;
+        }
+    }
+}

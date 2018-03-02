@@ -1,0 +1,31 @@
+.usuarios {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    max-width: 23%;
+    margin: 1%;
+    /* On mouse-over, add a deeper shadow */
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);        
+    }
+
+    h4{
+        border-bottom: 2px solid grey;
+    }
+}
+
+
+/* Add some padding inside the card container */
+.info {
+    padding: 5px 5px;
+    
+}

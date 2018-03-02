@@ -1,4 +1,3 @@
-import { Sexo } from '../model/sexoEnum'
 
 export class Usuario {
 
@@ -14,12 +13,21 @@ export class Usuario {
         nombre: string,
         apellido: string = 'Unknown',
         email: string = 'a@a.com',
-        avatar: string = 'img',
-        sexo: Sexo = Sexo.indeterminado
+        avatar: string = 'http://www.vpsleague.com/static/img/default-avatar.jpg',
+        sexo: Sexo = Sexo.I
 
     ) {
         console.log('Usuario constructor');
         this.id = -1;
-        
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.avatar = avatar;
+        this.sexo = sexo;
+
     }
+
+    
 }
+
+export enum Sexo { M='Masculino', F='Femenino', I='Indeterminado'}

@@ -1,0 +1,53 @@
+<p>Ejemplo de un
+  <b>componente padre e hijo</b> y aprender a pasar paramentros con
+  <b>@input y @output</b>
+</p>
+<p>Padre:
+  <b>ConcesionarioComponent</b>
+</p>
+<p>Hijo:
+  <b>CocheComponent</b>
+</p>
+
+
+
+<nav aria-label="Catalogo de Coches">
+  <ul class="catalogo pagination">
+    <li *ngFor="let coche of coches" [class.active]="coche == cocheActivo">
+      <a aria-label="Previous">{{ coche.marca }} {{ coche.modelo }} {{ coche.version }}</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="row">
+  <div class="lista col-xs-3">
+    <div class="panel panel-default ">
+      <div class="panel-heading">
+        <h3 class="panel-title">Catalogo de Coches</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="catalogo lista">
+          <li *ngFor="let coche of coches">
+            <!-- {{ coche.marca }} {{ coche.modelo }} {{ coche.version }} -->
+            <app-coche-lista [coche]="coche" (cocheSeleccionado)="compararCocheEvent($event)"></app-coche-lista>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="comparador col-xs-9">
+    <div class="panel panel-default ">
+      <div class="panel-heading">
+        <h3 class="panel-title">Comparador de Coches</h3>
+      </div>
+      <div class="panel-body">
+        <div class="coche" *ngFor="let cocheIteracion of comparador">
+          <app-coche [cocheParam]="cocheIteracion" (cocheSeleccionado)="recibirCoche($event)"></app-coche>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

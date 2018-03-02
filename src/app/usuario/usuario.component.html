@@ -1,3 +1,13 @@
-<p>
-  usuario works!
-</p>
+<div class="usuarios">
+    <div class="card" *ngFor="let usuario of usuarios">
+      <img src="{{usuario.avatar}}" alt="{{usuario.nombre}}" style="width:100%">
+      <div class="info">
+        <h4>
+          <b>{{usuario.nombre}} {{usuario.apellido}}</b>
+        </h4>
+        <p>{{usuario.email}}</p>
+        <p>{{usuario.sexo}}</p>
+      </div>
+    </div>
+  </div>
+<button (click)="nuevoUsuario()">Nuevo Usuario</button>
