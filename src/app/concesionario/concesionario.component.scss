@@ -1,5 +1,14 @@
 ul.lista{
     padding: 0;
+
+    .primario {
+        background-color: red;
+    }
+
+    .secundario {
+        background-color: yellow;
+    }
+
     li{
 
         list-style: none;
@@ -15,3 +24,10 @@ ul.lista{
         }
     }
 }
+
+input{
+    width: 100%;
+}
+
+
+

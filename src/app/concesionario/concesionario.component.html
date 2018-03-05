@@ -26,8 +26,9 @@
         <h3 class="panel-title">Catalogo de Coches</h3>
       </div>
       <div class="panel-body">
+        <input [(ngModel)] = "searchText" placeholder="Busca tu coche">
         <ul class="catalogo lista">
-          <li *ngFor="let coche of coches">
+          <li *ngFor="let coche of coches | cochesFilter : searchText" [class.primario]="coche == comparador[0] || coche == comparador[1]">
             <!-- {{ coche.marca }} {{ coche.modelo }} {{ coche.version }} -->
             <app-coche-lista [coche]="coche" (cocheSeleccionado)="compararCocheEvent($event)"></app-coche-lista>
           </li>
@@ -44,9 +45,11 @@
         <h3 class="panel-title">Comparador de Coches</h3>
       </div>
       <div class="panel-body">
-        <div class="coche" *ngFor="let cocheIteracion of comparador">
+        <!-- <div class="coche" *ngFor="let cocheIteracion of comparador">
           <app-coche [cocheParam]="cocheIteracion" (cocheSeleccionado)="recibirCoche($event)"></app-coche>
-        </div>
+        </div> -->
+        <app-coche [c1]="comparador[0]" [c2]="comparador[1]" (cocheSeleccionado)="recibirCoche($event)"></app-coche>
+        <app-coche [c1]="comparador[1]" [c2]="comparador[0]" (cocheSeleccionado)="recibirCoche($event)"></app-coche>
       </div>
     </div>
   </div>

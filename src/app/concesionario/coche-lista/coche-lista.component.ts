@@ -19,7 +19,7 @@ export class CocheListaComponent implements OnInit {
   seleccionar(e){
     this.cocheSeleccionado.emit({ coche : this.coche });
     
-    console.log(e);
+    //console.log(e);
 
 
   }

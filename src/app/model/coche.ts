@@ -12,7 +12,7 @@ export class Coche {
     consumo: number;
 
 
-    constructor(marca: string, modelo: string,  puertas:number, caballos:number, consumo:number, version?: string, foto?:string,) {
+    constructor(marca: string, modelo: string,  version:string, foto:string, puertas:number, caballos:number, consumo:number ) {
 
         this.id = -1;
         this.marca = marca;

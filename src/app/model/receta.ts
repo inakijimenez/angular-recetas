@@ -12,9 +12,14 @@ export class Receta {
     ingredientes: string[];
 
     constructor(
+        id: number,
         nombre: string,
-        img?: string,
-        cocinero: string = 'Anonimo' //Valor por defecto para 'undefined' o sin parametros
+        img: string,
+        likes:number,
+        cocinero: string,
+        descripcion: string,
+        isGlutenFree: boolean,
+        ingredientes: string[]
     ) {
         console.log('Receta constructor');
 

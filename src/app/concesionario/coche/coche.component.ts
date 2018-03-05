@@ -10,6 +10,8 @@ import { Coche } from '../../model/coche';
 export class CocheComponent implements OnInit {
 
   @Input ('cocheParam') coche: Coche; // input (nombre del parametro que viene) nombreVariable : tipodeDato
+  @Input('c1') c1 : Coche; // coche para mostrar
+  @Input('c2') c2 : Coche; // coche para comparar
   @Output () cocheSeleccionado = new EventEmitter(); //los parametros de salido se realizan a traves de eventos
 
   constructor() { 
