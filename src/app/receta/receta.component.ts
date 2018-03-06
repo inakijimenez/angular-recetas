@@ -21,7 +21,7 @@ export class RecetaComponent implements OnInit {
     console.log('RecetaComponent constructor');
 
 
-    this.receta = new Receta('Marmitako', null, undefined);
+    this.receta = new Receta(-1,'Marmitako', 'default', '','',3,false,['']);
 
 
     this.receta.addIngrediente('Patatas');

@@ -1,3 +1,29 @@
-<p>
-  recetario works!
-</p>
+<h2>RECETARIO</h2>
+
+<div class="row">
+
+  <div class="col-xs-3 lista">
+
+    <ul>
+      <li *ngFor="let receta of recetas | recetasFilter : searchText" (click)="show(receta)" [class.seleccionada]="receta == recetaSeleccionada">
+        <a>{{receta.nombre}}</a>
+        <img class="gluten" *ngIf="receta.isGlutenFree" src="\assets\img\gluten_free_icon.png" alt="gluten">
+        <img class="gluten" *ngIf="!receta.isGlutenFree" src="\assets\img\gluten_icon.png" alt="gluten">      
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-xs-9">
+
+    <input type="text" class="search" [(ngModel)] = "searchText" placeholder= "Busca tu receta">
+    <input #gluten type="checkbox" value="1" (change)="glutenFree(gluten)">Sin Gluten
+
+    <app-receta-detalle [receta]="recetaSeleccionada" *ngIf = "recetaSeleccionada.nombre != ''"></app-receta-detalle>
+
+  </div>
+
+
+
+
+</div>

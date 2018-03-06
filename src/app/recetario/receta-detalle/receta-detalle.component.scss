@@ -1,0 +1,55 @@
+.recetaDetalle{
+
+    padding: 5px;
+    margin: 0;
+
+    .imagenIngredientes{
+
+        margin: 0;
+        padding: 1%;
+        height: 59%;
+        overflow: hidden;
+        position: relative;
+
+        img.gluten {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: 30px;
+            width: 30px;
+        }
+
+        img{
+            max-width: 49%;
+            height: auto;
+            float: left;
+        }
+
+        ul{
+            max-width: 49%;
+            display: inline-block;
+            list-style: none;
+            margin: 0;
+
+            .ingredientes{
+                font-weight: bolder;
+                font-size: 1.2em;            }
+        }
+    }
+
+    .info{
+        height: 15%;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+    }
+
+    .descripcion{
+        height: 34%;
+
+        p{
+            margin-top: 10px;
+        }
+    }
+}

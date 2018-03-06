@@ -12,19 +12,20 @@ export class RecetasService {
   getAll():Receta[]{
 
     let recetas: Receta[] = [];
-    let receta: Receta;
+    let receta;
 
-    let jsonData = JSON.parse(MOCKS_RECETAS.recetas);
+    let jsonData = JSON.parse(MOCKS_RECETAS);
 
     jsonData.forEach(element => {
       
+      //console.log('element %o', element);
       receta = new Receta (
                            element.id,
                            element.nombre,
                            element.img,
-                           element.likes,
-                           element.cocinero,
-                           element.descrpcion,
+                           element.descripcion,
+                           element.cocinero,  
+                           element.likes,                                                    
                            element.isGlutenFree,
                            element.ingredientes
       );

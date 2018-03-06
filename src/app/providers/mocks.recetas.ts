@@ -1,25 +1,23 @@
-export class MOCKS_RECETAS {
-
-    static recetas = `[{
+export const MOCKS_RECETAS = `[{
 		"id": 1,
 		"nombre": "Rabo de Toro",
 		"img": "http://www.eladerezo.com/wp-content/uploads/2010/06/rabo-de-toro-guisado-1-1200x801.jpg",
-		"descripcion": "Si bien la Receta de rabo de toro es algo laboriosa, sólo el placer de degustar este plato típico del recetario tradicional, merece la pena.",
+		"descripcion": "Si bien la Receta de rabo de toro es algo laboriosa, sólo el placer de degustar este plato típico del recetario tradicional, merece la pena",
 		"cocinero": "Karlos Arguiñano",
 		"likes": 345,
 		"isGlutenFree": false,
-		"ingredientes": ['1500 g Carne de Vacuno',
-            '1 cebolla grande',
-            '3 zanahorias',
-            '1 Pimiento rojo',
-            '2 dientes Ajos',
-            '750 ml Vino tinto',
-            '1/2 l Caldo de carne o agua',
-            '2 hojas laurel',
-           '5 g jengibre',
-            'sal',
-            'Pimienta',
-            'Harina para rebozar']
+		"ingredientes": ["1500 g Carne de Vacuno",
+            "1 cebolla grande",
+            "3 zanahorias",
+            "1 Pimiento rojo",
+            "2 dientes Ajos",
+            "750 ml Vino tinto",
+            "1/2 l Caldo de carne o agua",
+            "2 hojas laurel",
+            "5 g jengibre",
+            "sal",
+            "Pimienta",
+            "Harina para rebozar"]
     },
     {
 		"id": 2,
@@ -29,18 +27,18 @@ export class MOCKS_RECETAS {
 		"cocinero": "El Comidista",
 		"likes": 43,
 		"isGlutenFree": false,
-		"ingredientes": ['500 gr. de bonito',
-            '500 gr. patatas',
-            '1 zanahoria mediana',
-            '2 pimientos verdes medianos',
-            '2 pimientos choriceros',
-            '1,5 cebollas',
-            '2 dientes de ajo',
-            '1 tomate maduro',
-            '100 ml. de vino blanco',
-            '1 punta de cuchillo de pimentón dulce',
-            'Aceite de oliva',
-            'Sal'
+		"ingredientes": ["500 gr. de bonito",
+            "500 gr. patatas",
+            "1 zanahoria mediana",
+            "2 pimientos verdes medianos",
+            "2 pimientos choriceros",
+            "1,5 cebollas",
+            "2 dientes de ajo",
+            "1 tomate maduro",
+            "100 ml. de vino blanco",
+            "1 punta de cuchillo de pimentón dulce",
+            "Aceite de oliva",
+            "Sal"
 
         ]
     },
@@ -52,18 +50,15 @@ export class MOCKS_RECETAS {
 		"cocinero": "John Doug",
 		"likes": 7,
 		"isGlutenFree": true,
-		"ingredientes": ['300 gramos de garbanzos',
-            '1 cebolla grande',
-            'Aceite de oliva virgen extra',
-            '5 dientes de ajo',
-            'Dos cucharaditas de comino',
-            'Perejil fresco recién picado',
-            'Un sobre de levadura en polvo',
-            'Sal y pimienta negra recién molida'
-
-        ]
+		"ingredientes": ["300 gramos de garbanzos",
+            "1 cebolla grande",
+            "Aceite de oliva virgen extra",
+            "5 dientes de ajo",
+            "Dos cucharaditas de comino",
+            "Perejil fresco recién picado",
+            "Un sobre de levadura en polvo",
+            "Sal y pimienta negra recién molida"]
 	}
 	
 ]`;
 
-}

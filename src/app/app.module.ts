@@ -8,11 +8,13 @@ import { AppRouter } from './app.routes';
 
 //Services
 import { CochesService } from './providers/coches.service';
+import { RecetasService } from './providers/recetas.service';
 
 
 //Pipes
 import { RoundPipe } from './pipes/round';
 import { CochesFilterPipe } from './pipes/cochesFilter';
+import { RecetasFilterPipe } from './pipes/recetasFilter';
 
 import { AppComponent } from './app.component';
 import { RecetaComponent } from './receta/receta.component';
@@ -25,7 +27,8 @@ import { CocheComponent } from './concesionario/coche/coche.component';
 import { CocheListaComponent } from './concesionario/coche-lista/coche-lista.component';
 import { RecetarioComponent } from './recetario/recetario.component';
 import { RecetaDetalleComponent } from './recetario/receta-detalle/receta-detalle.component';
-import { RecetasService } from './providers/recetas.service';
+
+
 
 
 
@@ -46,7 +49,8 @@ import { RecetasService } from './providers/recetas.service';
     CochesFilterPipe,
     RoundPipe,
     RecetarioComponent,
-    RecetaDetalleComponent
+    RecetaDetalleComponent,
+    RecetasFilterPipe
   ],
   imports: [
     BrowserModule,
