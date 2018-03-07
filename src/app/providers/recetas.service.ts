@@ -5,34 +5,50 @@ import { MOCKS_RECETAS } from './mocks.recetas';
 @Injectable()
 export class RecetasService {
 
-  constructor() { 
+  recetas: Receta[];
+
+  constructor() {
     console.log('RecetasService constructor');
-  }
+    this.recetas = [];
+    }
 
-  getAll():Receta[]{
+  /** 
+   * Devuelve la lista de todas las recetas
+  */
+  getAll(): Receta[] {
 
-    let recetas: Receta[] = [];
+    
     let receta;
 
     let jsonData = JSON.parse(MOCKS_RECETAS);
 
     jsonData.forEach(element => {
-      
+
       //console.log('element %o', element);
-      receta = new Receta (
-                           element.id,
-                           element.nombre,
-                           element.img,
-                           element.descripcion,
-                           element.cocinero,  
-                           element.likes,                                                    
-                           element.isGlutenFree,
-                           element.ingredientes
+      receta = new Receta(
+        element.id,
+        element.nombre,
+        element.img,
+        element.descripcion,
+        element.cocinero,
+        element.likes,
+        element.isGlutenFree,
+        element.ingredientes
       );
-      recetas.push(receta);
+      this.recetas.push(receta);
     });
-    
-    return recetas;
+
+    return this.recetas;
+  }
+
+  /**
+   * Introduce nuevas recetas
+   * @param receta receta a introducir
+   */
+  put(receta: Receta): void {
+    console.log('RecetasService receta %o', receta);
+    this.recetas.unshift(receta);
+
   }
 
 }

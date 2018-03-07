@@ -1,0 +1,85 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalReceta">
+  Nueva Receta
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalReceta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Nueva Receta</h4>
+      </div>
+      <div class="modal-body">
+        <p>Valores del Formulario: {{ formulario.value | json }}</p>
+        <p>Estado del Formulario: {{ formulario.status }}</p>
+
+        <form (ngSubmit)="submit($event)" novalidate [formGroup]="formulario">
+
+          <div class="row">
+            <div class="datos col-xs-6">
+              <div class="form-group">
+                <label for="nombre">Nombre: </label>
+                <input formControlName="nombre" id="nombre" class="form-control">
+                <p *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.touched" class="text-danger">Obligatorio minimo 2 letras</p>
+              </div>
+
+              <div class="form-group">
+                <label for="cocinero">Cocinero: </label>
+                <input formControlName="cocinero" id="cocinero" class="form-control">
+                <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">No es obligatorio pero debe tener al menos 5 letras</p>
+              </div>
+
+              <label>Gluten: </label>
+              <div class="form-group radio form-inline">
+                <label>
+                  <input type="radio" formControlName="gluten" value="0">Si</label>
+                <label>
+                  <input type="radio" formControlName="gluten" value="1">No</label>
+              </div>
+
+            </div>
+
+            <div class="foto col-xs-6">
+              <img [src]="formulario.controls.imagen.value" [alt]="formulario.controls.nombre.value">
+              <div class="form-group form-inline">
+                <label for="imagen">Imagen: </label>
+                <input formControlName="imagen" id="imagen" class="form-control">
+                <p *ngIf="formulario.controls.imagen.invalid && formulario.controls.imagen.touched" class="text-danger">La imagen es obligatoria</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="descripcion col-xs-12">
+              <div class="form-group">
+                <label for="descripcion">Descripcion: </label>
+                <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="5"></textarea>
+                <p *ngIf="formulario.controls.descripcion.invalid && formulario.controls.descripcion.touched" class="text-danger">Obligatorio minimo 100 letras</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ingredientes -->
+          <div class="row col-xs-12">
+            <div formArrayName="ingredientes">
+              <div *ngFor="let ingrediente of formulario.controls.ingredientes.controls; let i=index">
+                <div [formGroupName]="i">
+                  <label for="ingrediente">Ingrediente: </label>
+                  <input formControlName="ingrediente" id="ingrediente" class="form-control">
+                </div>
+              </div>
+            </div>
+            <a (click)="nuevoIngrediente()">Nuevo Ingrediente</a>
+          </div>
+          <button type="submit" [disabled]="!formulario.valid" class="btn btn-success btn-block">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

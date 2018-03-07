@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Modulo para routing
 import { AppRouter } from './app.routes';
@@ -16,6 +16,7 @@ import { RoundPipe } from './pipes/round';
 import { CochesFilterPipe } from './pipes/cochesFilter';
 import { RecetasFilterPipe } from './pipes/recetasFilter';
 
+//Components
 import { AppComponent } from './app.component';
 import { RecetaComponent } from './receta/receta.component';
 import { PropiedadesComponent } from './propiedades/propiedades.component';
@@ -27,6 +28,7 @@ import { CocheComponent } from './concesionario/coche/coche.component';
 import { CocheListaComponent } from './concesionario/coche-lista/coche-lista.component';
 import { RecetarioComponent } from './recetario/recetario.component';
 import { RecetaDetalleComponent } from './recetario/receta-detalle/receta-detalle.component';
+import { FormularioComponent } from './recetario/formulario/formulario.component';
 
 
 
@@ -50,12 +52,14 @@ import { RecetaDetalleComponent } from './recetario/receta-detalle/receta-detall
     RoundPipe,
     RecetarioComponent,
     RecetaDetalleComponent,
-    RecetasFilterPipe
+    RecetasFilterPipe,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
     AppRouter,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule    
   ],
   providers: [CochesService, RecetasService],
   bootstrap: [AppComponent]

@@ -1,14 +1,16 @@
 <h2>RECETARIO</h2>
 
+
+
 <div class="row">
 
   <div class="col-xs-3 lista">
 
     <ul>
-      <li *ngFor="let receta of recetas | recetasFilter : searchText : isGlutenFree" (click)="show(receta)" [class.seleccionada]="receta == recetaSeleccionada">
+      <li *ngFor="let receta of recetas | recetasFilter : searchText : glutenFilter" (click)="show(receta)" [class.seleccionada]="receta == recetaSeleccionada">
         <a>{{receta.nombre}}</a>
         <img class="gluten" *ngIf="receta.isGlutenFree" src="\assets\img\gluten_free_icon.png" alt="gluten">
-        <img class="gluten" *ngIf="!receta.isGlutenFree" src="\assets\img\gluten_icon.png" alt="gluten">      
+        <img class="gluten" *ngIf="!receta.isGlutenFree" src="\assets\img\gluten_icon.png" alt="gluten">
       </li>
     </ul>
 
@@ -16,12 +18,17 @@
 
   <div class="col-xs-9">
 
-    <input type="text" class="search" [(ngModel)] = "searchText" placeholder= "Busca tu receta por nombre, ingredientes o cocinero">
-    <input type="checkbox" [(ngModel)]="isGlutenFree">Sin Gluten
+    <!-- form con ventana modal -->
+    <app-formulario class="nuevo"></app-formulario>
+    <input type="text" class="search" [(ngModel)]="searchText" placeholder="Busca tu receta por nombre, ingredientes o cocinero">
+    <p><input type="checkbox" [(ngModel)]="glutenFilter">Sin Gluten</p>
 
-    <app-receta-detalle [receta]="recetaSeleccionada" *ngIf = "recetaSeleccionada.nombre != ''"></app-receta-detalle>
+
+    <app-receta-detalle [receta]="recetaSeleccionada" *ngIf="recetaSeleccionada.nombre != ''"></app-receta-detalle>
 
   </div>
+
+
 
 
 

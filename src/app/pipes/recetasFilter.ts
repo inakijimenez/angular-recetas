@@ -35,41 +35,10 @@ export class RecetasFilterPipe implements PipeTransform {
       searchText = searchText.toLowerCase();
       let receta = '';
       return recetasFilterArray.filter(it => {
-
-
         receta = it.nombre + it.ingredientes + it.cocinero;
         receta = receta.toLowerCase();
-
         return receta.includes(searchText);
       });
     }
-
-
-    //   if (!searchText && isGlutenFree){
-    //     recetas.forEach( it =>{
-    //       if ( it.isGlutenFree ){
-    //         return it;
-    //       }
-    //     });
-    //   } 
-    //   searchText = searchText.toLowerCase();
-    //   //console.log(`filter isGlutenFree ${isGlutenFree}`);
-
-    //   let receta = '';
-    //   return recetas.filter(it => {
-
-    //     if (isGlutenFree) {
-    //       if (it.isGlutenFree) {
-    //         receta = it.nombre + it.ingredientes + it.cocinero;
-    //         receta = receta.toLowerCase();
-    //       }
-    //     } else {
-    //       receta = it.nombre + it.ingredientes + it.cocinero;
-    //       receta = receta.toLowerCase();
-    //     }
-    //     return receta.includes(searchText);
-    //   });
-    // }
-
   }
 }
