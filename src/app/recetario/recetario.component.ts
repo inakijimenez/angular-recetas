@@ -36,13 +36,5 @@ export class RecetarioComponent implements OnInit {
     //console.log(this.recetaSeleccionada);
   }
 
-  glutenFree(gluten){
-    console.log(gluten.checked);
-    if(gluten.checked){
-
-    } else {
-
-    }
-  }
-
+  
 }
