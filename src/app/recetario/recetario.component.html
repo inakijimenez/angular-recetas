@@ -5,7 +5,7 @@
   <div class="col-xs-3 lista">
 
     <ul>
-      <li *ngFor="let receta of recetas | recetasFilter : searchText" (click)="show(receta)" [class.seleccionada]="receta == recetaSeleccionada">
+      <li *ngFor="let receta of recetas | recetasFilter : searchText : true" (click)="show(receta)" [class.seleccionada]="receta == recetaSeleccionada">
         <a>{{receta.nombre}}</a>
         <img class="gluten" *ngIf="receta.isGlutenFree" src="\assets\img\gluten_free_icon.png" alt="gluten">
         <img class="gluten" *ngIf="!receta.isGlutenFree" src="\assets\img\gluten_icon.png" alt="gluten">      
@@ -16,8 +16,8 @@
 
   <div class="col-xs-9">
 
-    <input type="text" class="search" [(ngModel)] = "searchText" placeholder= "Busca tu receta">
-    <input #gluten type="checkbox" value="1" (change)="glutenFree(gluten)">Sin Gluten
+    <input type="text" class="search" [(ngModel)] = "searchText" placeholder= "Busca tu receta por nombre, ingredientes o cocinero">
+    <input type="checkbox" (change)="glutenFree(gluten)" [(ngModel)]=>Sin Gluten
 
     <app-receta-detalle [receta]="recetaSeleccionada" *ngIf = "recetaSeleccionada.nombre != ''"></app-receta-detalle>
 
