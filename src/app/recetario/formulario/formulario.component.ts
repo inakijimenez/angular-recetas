@@ -60,10 +60,22 @@ export class FormularioComponent implements OnInit {
 
     let descripcion = this.formulario.value.descripcion;
 
-    let receta: Receta = new Receta(-1, nombre, img, descripcion, cocinero, 0, isGlutenFree, ['']);
+
+    let ingredientesForm = this.formulario.value.ingredientes;
+    let ingredientes: string[] = [];
+
+    ingredientesForm.forEach(ing => {
+      if (ing.ingrediente != '') {
+        ingredientes.push(ing.ingrediente);
+      }
+    });
+    //console.log('ingredientes ' + ingredientes);
+
+
+    let receta: Receta = new Receta(-1, nombre, img, descripcion, cocinero, 0, isGlutenFree, ingredientes);
     this.recetasService.put(receta);
 
-    
+
     $('.close').click();
 
   }
@@ -80,12 +92,12 @@ export class FormularioComponent implements OnInit {
   nuevoIngrediente() {
     const control = <FormArray>this.formulario.controls['ingredientes'];
     const addrCtrl = this.addIngredient();
-    
+
     control.push(addrCtrl);
-    
+
     /* subscribe to individual address value changes */
     // addrCtrl.valueChanges.subscribe(x => {
     //   console.log(x);
     // })
-}
+  }
 }
