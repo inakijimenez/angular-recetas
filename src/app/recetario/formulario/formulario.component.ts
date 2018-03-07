@@ -36,7 +36,7 @@ export class FormularioComponent implements OnInit {
       gluten: ['0'],
       imagen: ['/assets/img/receta_default.jpg', [Validators.required]],
       descripcion: ['', [Validators.required, Validators.minLength(2)]],
-      ingredientes: this.fb.array([this.addIngredient()])
+      ingredientes: this.fb.array([this.addIngrediente()])
     });
   }
 
@@ -80,9 +80,9 @@ export class FormularioComponent implements OnInit {
 
   }
 
-  addIngredient(): FormGroup {
+  addIngrediente(): FormGroup {
 
-    console.log('addIngredient');
+    console.log('addIngrediente');
 
     return this.fb.group({
       ingrediente: ''
@@ -91,9 +91,9 @@ export class FormularioComponent implements OnInit {
 
   nuevoIngrediente() {
     const control = <FormArray>this.formulario.controls['ingredientes'];
-    const addrCtrl = this.addIngredient();
+    const ingredienteCtrl = this.addIngrediente();
 
-    control.push(addrCtrl);
+    control.push(ingredienteCtrl);
 
     /* subscribe to individual address value changes */
     // addrCtrl.valueChanges.subscribe(x => {

@@ -71,7 +71,7 @@
               <label for="ingrediente">Ingredientes: </label>
               <div *ngFor="let ingrediente of formulario.controls.ingredientes.controls; let i=index" class="form-group form-inline">
                 <div [formGroupName]="i">
-                  <input formControlName="ingrediente" id="ingrediente" class="form-control">
+                  <input formControlName="ingrediente" class="form-control">
                   <span class="glyphicon glyphicon-plus btn btn-default" aria-hidden="true" (click)="nuevoIngrediente()"></span>
                 </div>
               </div>
