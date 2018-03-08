@@ -79,7 +79,7 @@
                   <span class="glyphicon glyphicon-remove btn btn-danger col-xs-1" aria-hidden="true" (click)="eliminarIngrediente(i)"></span>
                 </div>
               </div>
-              <p *ngIf="formulario.controls.ingredientes.invalid && !formulario.controls.ingredientes.printine" class="text-danger">Al menos un ingrediente es obligatorio</p>
+              <p *ngIf="formulario.controls.ingredientes.invalid && !formulario.controls.ingredientes.pristine" class="text-danger">Al menos un ingrediente es obligatorio</p>
             </div>
             <!-- <a (click)="nuevoIngrediente()">Nuevo Ingrediente</a> -->
           </div>

@@ -72,10 +72,6 @@ export class FormularioComponent implements OnInit {
 
     control.push(ingredienteCtrl);
 
-    /* subscribe to individual address value changes */
-    // addrCtrl.valueChanges.subscribe(x => {
-    //   console.log(x);
-    // })
   }
 
   eliminarIngrediente( i ){    

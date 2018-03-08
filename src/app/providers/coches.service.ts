@@ -6,13 +6,15 @@ import { MOCKS_COCHES } from './mocks.coches';
 @Injectable()
 export class CochesService {
 
+  coches:Coche[] = [];
+
   constructor() {
     console.log('CochesService constructor');
    }
 
    getAll():Coche[]{
     console.log('CochesService getAll');
-    let coches:Coche[] = [];
+    
     let coche;
     
     let jsonData = JSON.parse(MOCKS_COCHES.stock);
@@ -29,12 +31,14 @@ export class CochesService {
                           element.consumo
                           );
 
-        coches.push(coche);
+        this.coches.push(coche);
 
     });
 
-    return coches;
+    return this.coches;
   }
 
-  
+  put (coche){
+    this.coches.unshift(coche);
+  }
 }

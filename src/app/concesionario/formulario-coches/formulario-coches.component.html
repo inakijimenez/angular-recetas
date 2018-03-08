@@ -1,0 +1,88 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalReceta">
+  Nuevo Coche
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalReceta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo Coche</h4>
+      </div>
+      <div class="modal-body">
+        <p>Valores del Formulario: {{ formularioCoches.value | json }}</p>
+        <p>Estado del Formulario: {{ formularioCoches.status }}</p>
+
+        <form (ngSubmit)="submit($event)" novalidate [formGroup]="formularioCoches">
+
+          <div class="row">
+            <div class="datos col-xs-6">
+              <div [ngClass]="estilosInput(formularioCoches.controls.marca)">
+                <label for="marca">Marca: </label>
+                <input formControlName="marca" id="marca" class="form-control">
+                <p *ngIf="formularioCoches.controls.marca.invalid && formularioCoches.controls.marca.touched" class="text-danger">Campo obligatorio</p>
+              </div>
+
+              <div [ngClass]="estilosInput(formularioCoches.controls.modelo)">
+                <label for="modelo">Modelo: </label>
+                <input formControlName="modelo" id="modelo" class="form-control">
+                <p *ngIf="formularioCoches.controls.modelo.invalid && formularioCoches.controls.modelo.touched" class="text-danger">Campo obligatorio</p>
+              </div>
+
+              <div [ngClass]="estilosInput(formularioCoches.controls.version)">
+                <label for="version">Version: </label>
+                <input formControlName="version" id="version" class="form-control">
+                <!-- <p *ngIf="formularioCoches.controls.version.invalid && formularioCoches.controls.version.touched" class="text-danger">Campo obligatorios</p> -->
+              </div>
+
+              
+
+              <div [ngClass]="estilosInput(formularioCoches.controls.version)">
+                <label for="caballos">Caballos: </label>
+                <input formControlName="caballos" id="caballos" class="form-control">
+                <p *ngIf="formularioCoches.controls.caballos.invalid && formularioCoches.controls.caballos.touched" class="text-danger">Campo obligatorio y solo numeros</p>
+              </div>
+
+              <div [ngClass]="estilosInput(formularioCoches.controls.version)">
+                <label for="consumo">Consumo: </label>
+                <input formControlName="consumo" id="consumo" class="form-control">
+                <p *ngIf="formularioCoches.controls.consumo.invalid && formularioCoches.controls.consumo.touched" class="text-danger">Campo obligatorio y solo numeros</p>
+              </div>
+
+              <label>Puertas: </label>
+              <div class="form-group radio form-inline">
+                <label>
+                  <input type="radio" formControlName="puertas" value="0">3</label>
+                <label>
+                  <input type="radio" formControlName="puertas" value="1">5</label>
+                <label>
+                  <input type="radio" formControlName="puertas" value="2">7</label>
+              </div>
+
+            </div>
+
+            <div class="foto col-xs-6 form-inline">
+              <img [src]="formularioCoches.controls.foto.value" [alt]="formularioCoches.controls.marca.value">
+              <div [ngClass]="estilosInput(formularioCoches.controls.foto)">
+                <label for="foto">Imagen: </label>
+                <input formControlName="foto" id="foto" class="form-control">
+                <p *ngIf="formularioCoches.controls.foto.invalid && formularioCoches.controls.foto.touched" class="text-danger">La imagen es obligatoria</p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+          <button type="submit" [disabled]="!formularioCoches.valid" class="btn btn-success btn-block">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

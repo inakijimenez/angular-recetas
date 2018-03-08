@@ -29,6 +29,7 @@ import { CocheListaComponent } from './concesionario/coche-lista/coche-lista.com
 import { RecetarioComponent } from './recetario/recetario.component';
 import { RecetaDetalleComponent } from './recetario/receta-detalle/receta-detalle.component';
 import { FormularioComponent } from './recetario/formulario/formulario.component';
+import { FormularioCochesComponent } from './concesionario/formulario-coches/formulario-coches.component';
 
 
 
@@ -53,7 +54,8 @@ import { FormularioComponent } from './recetario/formulario/formulario.component
     RecetarioComponent,
     RecetaDetalleComponent,
     RecetasFilterPipe,
-    FormularioComponent
+    FormularioComponent,
+    FormularioCochesComponent
   ],
   imports: [
     BrowserModule,
