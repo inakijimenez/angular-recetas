@@ -5,7 +5,7 @@ import { Receta } from '../../model/receta';
 
 //npm install --save-dev jquery //sin instalar no funciona pq no existe en los modules
 import * as $ from 'jquery';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario',
@@ -35,33 +35,74 @@ export class FormularioComponent implements OnInit {
       cocinero: ['', [Validators.minLength(5)]],
       gluten: ['0'],
       imagen: ['/assets/img/receta_default.jpg', [Validators.required]],
-      descripcion: ['', [Validators.required, Validators.minLength(2)]],
-      ingredientes: this.fb.array([this.addIngrediente()])
+      descripcion: ['', [Validators.required, Validators.minLength(100)]],
+      ingredientes: this.fb.array([this.addIngredienteFormGroup()], Validators.required)
     });
   }
 
   submit(e): void {
-    console.log('FormularioComponent onSubmit');
+    console.log('FormularioComponent onSubmit');    
 
     //recoger datos del formulario
-    let nombre = this.formulario.value.nombre;
+    let receta : Receta = this.mapearFormulario(this.formulario);
+    
+    this.recetasService.put(receta);
 
-    let cocinero = this.formulario.value.cocinero;
+    //limpiar formulario
+    this.crearFormulario();
+    
+    $('.close').click();
+
+  }
+
+  addIngredienteFormGroup(): FormGroup {
+
+    console.log('addIngrediente');
+
+    return this.fb.group({
+      ingrediente: ''
+    });
+  }
+
+  nuevoIngrediente() {
+    //const control = <FormArray>this.formulario.controls['ingredientes'];
+    const control = <FormArray>this.formulario.get('ingredientes');
+    
+    const ingredienteCtrl = this.addIngredienteFormGroup();
+
+    control.push(ingredienteCtrl);
+
+    /* subscribe to individual address value changes */
+    // addrCtrl.valueChanges.subscribe(x => {
+    //   console.log(x);
+    // })
+  }
+
+  eliminarIngrediente( i ){    
+    const control = <FormArray>this.formulario.get('ingredientes');
+    control.removeAt(i);
+  }
+
+  mapearFormulario( form ) : Receta {
+
+    let nombre = form.value.nombre;
+
+    let cocinero = form.value.cocinero;
     if (cocinero === '') {
       cocinero = 'Anonimo';
     }
 
-    let img = this.formulario.value.imagen;
+    let img = form.value.imagen;
 
     let isGlutenFree: boolean = false;
-    if (this.formulario.value.gluten === '1') {
+    if (form.value.gluten === '1') {
       isGlutenFree = true;
     }
 
-    let descripcion = this.formulario.value.descripcion;
+    let descripcion = form.value.descripcion;
 
 
-    let ingredientesForm = this.formulario.value.ingredientes;
+    let ingredientesForm = form.value.ingredientes;
     let ingredientes: string[] = [];
 
     ingredientesForm.forEach(ing => {
@@ -73,31 +114,20 @@ export class FormularioComponent implements OnInit {
 
 
     let receta: Receta = new Receta(-1, nombre, img, descripcion, cocinero, 0, isGlutenFree, ingredientes);
-    this.recetasService.put(receta);
-
-
-    $('.close').click();
-
+    return receta;
   }
 
-  addIngrediente(): FormGroup {
+  estilosInput( control : FormControl ) : string{
 
-    console.log('addIngrediente');
+    const CLASS_SUCCESS = "form-group has-success";
+    const CLASS_ERROR = "form-group has-error";
 
-    return this.fb.group({
-      ingrediente: ''
-    });
-  }
+    if( control.dirty){
+      return (control.valid)? CLASS_SUCCESS : CLASS_ERROR ;
+    } else {
+      return "form-group";
+    }
 
-  nuevoIngrediente() {
-    const control = <FormArray>this.formulario.controls['ingredientes'];
-    const ingredienteCtrl = this.addIngrediente();
-
-    control.push(ingredienteCtrl);
-
-    /* subscribe to individual address value changes */
-    // addrCtrl.valueChanges.subscribe(x => {
-    //   console.log(x);
-    // })
+    
   }
 }

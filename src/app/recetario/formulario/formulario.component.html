@@ -21,13 +21,13 @@
 
           <div class="row">
             <div class="datos col-xs-6">
-              <div class="form-group">
+              <div [ngClass]="estilosInput(formulario.controls.nombre)">
                 <label for="nombre">Nombre: </label>
                 <input formControlName="nombre" id="nombre" class="form-control">
                 <p *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.touched" class="text-danger">Obligatorio minimo 2 letras</p>
               </div>
 
-              <div class="form-group">
+              <div [ngClass]="estilosInput(formulario.controls.cocinero)">
                 <label for="cocinero">Cocinero: </label>
                 <input formControlName="cocinero" id="cocinero" class="form-control">
                 <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">No es obligatorio pero debe tener al menos 5 letras</p>
@@ -43,9 +43,9 @@
 
             </div>
 
-            <div class="foto col-xs-6">
+            <div class="foto col-xs-6 form-inline">
               <img [src]="formulario.controls.imagen.value" [alt]="formulario.controls.nombre.value">
-              <div class="form-group form-inline">
+              <div [ngClass]="estilosInput(formulario.controls.imagen)">
                 <label for="imagen">Imagen: </label>
                 <input formControlName="imagen" id="imagen" class="form-control">
                 <p *ngIf="formulario.controls.imagen.invalid && formulario.controls.imagen.touched" class="text-danger">La imagen es obligatoria</p>
@@ -57,7 +57,7 @@
 
           <div class="row">
             <div class="descripcion col-xs-12">
-              <div class="form-group">
+              <div [ngClass]="estilosInput(formulario.controls.descripcion)">
                 <label for="descripcion">Descripcion: </label>
                 <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="5"></textarea>
                 <p *ngIf="formulario.controls.descripcion.invalid && formulario.controls.descripcion.touched" class="text-danger">Obligatorio minimo 100 letras</p>
@@ -66,15 +66,20 @@
           </div>
 
           <!-- ingredientes -->
-          <div class="row col-xs-12">
+          <div class="row col-xs-12 ingr">
             <div formArrayName="ingredientes">
-              <label for="ingrediente">Ingredientes: </label>
+              <div class="ingrLabel">
+                <label for="ingrediente">Ingredientes: </label>
+                <span class="glyphicon glyphicon-plus btn btn-default col-xs-1" aria-hidden="true"
+                  (click)="nuevoIngrediente()"></span>
+              </div>
               <div *ngFor="let ingrediente of formulario.controls.ingredientes.controls; let i=index" class="form-group form-inline">
                 <div [formGroupName]="i">
-                  <input formControlName="ingrediente" class="form-control">
-                  <span class="glyphicon glyphicon-plus btn btn-default" aria-hidden="true" (click)="nuevoIngrediente()"></span>
+                  <input formControlName="ingrediente" class="form-control col-xs-10">
+                  <span class="glyphicon glyphicon-remove btn btn-danger col-xs-1" aria-hidden="true" (click)="eliminarIngrediente(i)"></span>
                 </div>
               </div>
+              <p *ngIf="formulario.controls.ingredientes.invalid && !formulario.controls.ingredientes.printine" class="text-danger">Al menos un ingrediente es obligatorio</p>
             </div>
             <!-- <a (click)="nuevoIngrediente()">Nuevo Ingrediente</a> -->
           </div>

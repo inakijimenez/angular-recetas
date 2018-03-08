@@ -5,3 +5,31 @@
         margin-bottom: 10px;
     }
 }
+
+textarea{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 3em;
+}
+
+.ingr{
+    position: relative;
+    margin-bottom: 10px;
+
+    .ingrLabel{
+        margin-bottom: 15px;
+    }
+    input{
+        
+        width: 90%;        
+    }
+    .glyphicon-remove{
+        
+        display: inline-block;
+        width: 10%;
+    }
+    .glyphicon-plus{
+        position: absolute;
+        right : 10px;
+    }
+}
