@@ -12,7 +12,7 @@ export class TodosService {
   }
 
   getTodos(): Observable<any> {
-    let url = END_POINT + '/todos?userId=2';
+    let url = END_POINT + '/todos/';
     console.log(`TodosService getTodos ${url}`);
 
     return this.http.get(url);
@@ -21,6 +21,11 @@ export class TodosService {
   nuevoTodo (todo){
     let url = END_POINT + '/todos/';
     console.log(todo);
-    this.http.post(url, todo);
+    this.http.post(url, todo).
+    subscribe(
+      (data:any) =>{
+        console.log(data);
+      }
+    );
   }
 }
