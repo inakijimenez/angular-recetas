@@ -1,0 +1,5 @@
+FormControl - Input. Contiene value y validacion
+
+FormGroup - Formulario. Conjunto de los elementos del formulario
+
+FormArray - 

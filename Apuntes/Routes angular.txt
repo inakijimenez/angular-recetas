@@ -1,0 +1,14 @@
+/app
+
+app-routes.ts
+snipet -- ng2-routes o copiar de la api
+
+** es la ruta para cualquier ruta no definida
+
+import de los componentes a las rutas
+
+<router-outlet></router-outlet> en html de la app en el sitio donde se van a renderizar los componentes
+
+En los enlaces en lugar de href='ruta' se usa routerLink="ruta"
+
+routerLinkActive = 'active' en los li del nav para que se ponga como activo el enlace actual

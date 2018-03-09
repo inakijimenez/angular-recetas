@@ -1,0 +1,41 @@
+Codigos de response
+
+200 - ok
+201 - ok. Se ha creado el recurso solicitado
+
+
+300 - redirect
+
+400 - error
+404 - error page not found
+
+500 - fallo en el servidor
+
+
+La 	response  text/HTML
+ contentType application/JSON
+	response application/pdf
+
+METODOS HTTP
+
+GET recibir informacion
+
+endpoint/perro - todos los perros GET
+endpoint/perro/{id} - perro con id {id} GET
+
+POST enviar informacion
+endpoint/perro/ - envia perro POST
+
+DELETE eliminar
+endpoint/perro/{id} - elimina perro con id {id} DELETE
+
+PUT modificar todo el elemento
+endpoint/perro/{id} - cambia perro con id {id} PUT
+
+PATCH modificacion parcial
+
+
+
+Servicio REST
+
+endpoint - punto de entrada. La URL a partir de la cual se encuentran los metodos	

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 //Modulo para routing
 import { AppRouter } from './app.routes';
@@ -9,6 +10,7 @@ import { AppRouter } from './app.routes';
 //Services
 import { CochesService } from './providers/coches.service';
 import { RecetasService } from './providers/recetas.service';
+import { TodosService } from './providers/todos.service';
 
 
 //Pipes
@@ -30,13 +32,8 @@ import { RecetarioComponent } from './recetario/recetario.component';
 import { RecetaDetalleComponent } from './recetario/receta-detalle/receta-detalle.component';
 import { FormularioComponent } from './recetario/formulario/formulario.component';
 import { FormularioCochesComponent } from './concesionario/formulario-coches/formulario-coches.component';
-
-
-
-
-
-
-
+import { PlantillaComponent } from './plantilla/plantilla.component';
+import { TodosComponent } from './todos/todos.component';
 
 @NgModule({
   declarations: [
@@ -55,15 +52,18 @@ import { FormularioCochesComponent } from './concesionario/formulario-coches/for
     RecetaDetalleComponent,
     RecetasFilterPipe,
     FormularioComponent,
-    FormularioCochesComponent
+    FormularioCochesComponent,
+    PlantillaComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,
     AppRouter,
     FormsModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule,
+    HttpClientModule    
   ],
-  providers: [CochesService, RecetasService],
+  providers: [CochesService, RecetasService, TodosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,24 @@
+<div class="bg">
+
+  <section>
+
+    <h2>Tareas</h2>
+    <div class="nuevoTodoDiv col-xs-12">
+      <input type="text" [(ngModel)]="nuevoTitle">
+      <span class="glyphicon glyphicon-plus btn btn-default col-xs-1" aria-hidden="true" (click)="nuevoTodo(nuevoTitle)"></span>
+    </div>
+    <div class="lista col-xs-12">
+      <ul>
+        <div class="elemento" *ngFor="let todo of todos; index as i">
+        <li>
+          <input type="checkbox" (click)="check(i)">
+          <div class="title" [class.tachado]="todosTachados.indexOf(todo)!='-1'">{{todo.title}}</div>
+          <span class="glyphicon glyphicon-remove btn btn-danger col-xs-1" aria-hidden="true" (click)="eliminarTodo(i)"></span>
+        </li>
+      </div>
+      </ul>
+    </div>
+    <span>Modificar</span>
+  </section>
+
+</div>

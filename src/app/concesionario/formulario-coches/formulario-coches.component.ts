@@ -6,7 +6,7 @@ import { Coche } from '../../model/coche';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-formulario-coches',
+  selector: 'app-formulario-coches', 
   templateUrl: './formulario-coches.component.html',
   styleUrls: ['./formulario-coches.component.scss']
 })
