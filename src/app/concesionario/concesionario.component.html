@@ -19,7 +19,7 @@
   </ul>
 </nav>
 
-<app-formulario-coches></app-formulario-coches>
+<app-formulario-coches (cocheCreado)="cocheCreadoEvent($event)"></app-formulario-coches>
 <div class="row">
   <div class="lista col-xs-3">
     <div class="panel panel-default ">
@@ -29,9 +29,10 @@
       <div class="panel-body">
         <input [(ngModel)] = "searchText" placeholder="Busca tu coche">
         <ul class="catalogo lista">
-          <li *ngFor="let coche of coches | cochesFilter : searchText" [class.primario]="coche == comparador[0] || coche == comparador[1]">
+          <li *ngFor="let coche of coches | cochesFilter : searchText; let i = index" [class.primario]="coche == comparador[0] || coche == comparador[1]">
             <!-- {{ coche.marca }} {{ coche.modelo }} {{ coche.version }} -->
             <app-coche-lista [coche]="coche" (cocheSeleccionado)="compararCocheEvent($event)"></app-coche-lista>
+            <span class="glyphicon glyphicon-remove btn btn-danger col-xs-1" aria-hidden="true" (click)="deleteCoche(i)"></span>
           </li>
         </ul>
       </div>

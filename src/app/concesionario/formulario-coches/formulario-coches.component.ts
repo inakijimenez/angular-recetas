@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CochesService } from '../../providers/coches.service';
 import { Coche } from '../../model/coche';
 
 import * as $ from 'jquery';
+
+
 
 @Component({
   selector: 'app-formulario-coches', 
@@ -11,6 +13,8 @@ import * as $ from 'jquery';
   styleUrls: ['./formulario-coches.component.scss']
 })
 export class FormularioCochesComponent implements OnInit {
+
+  @Output () cocheCreado = new EventEmitter;
 
   formularioCoches: FormGroup;
 
@@ -26,8 +30,7 @@ export class FormularioCochesComponent implements OnInit {
 
   crearFormulario() {
 
-    let numberPattern = "^[a-z0-9_-]{8,15}$";
-
+    
     this.formularioCoches = this.fb.group({
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
@@ -41,8 +44,18 @@ export class FormularioCochesComponent implements OnInit {
 
   submit(e) {
     let coche: Coche = this.recogerDatos(this.formularioCoches.value);
-    this.cochesService.put(coche);
-
+    //this.cochesService.put(coche);//crea coches temporales
+    
+    this.cochesService.postCocheRest(coche).//añade coches al db.json
+    subscribe(
+      data => {
+        console.log('Coche creado %o', data);
+        this.cocheCreadoEvent(event);//lanza un evento al cocesionario component para que recargue la lista de coches
+      }, error => {
+        console.log('Error en post %o', error);
+      }
+    ); 
+    
     //limpiar form
     this.crearFormulario();
     $('.close').click();
@@ -83,5 +96,10 @@ export class FormularioCochesComponent implements OnInit {
     } else {
       return "form-group";
     }
+  }
+
+  cocheCreadoEvent(e){
+    console.log('formulario cocheCreadoEvent');
+    this.cocheCreado.emit(e);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../providers/todos.service';
 import { Todo } from '../model/todo';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-todos',
@@ -81,6 +82,16 @@ export class TodosComponent implements OnInit {
   eliminarTodo(i): void {
     this.todos.forEach((el, index) => {
       if (el.id === this.todos[i].id) {
+        
+        this.todosService.deleteTodo(this.todos[i]).
+        subscribe( data => {
+          console.log('Delete todo %o', data);
+        }, error => {
+          console.log(`error de delete ${error}`);
+        }
+      
+      );
+
         this.todos.splice(index, 1);
         return false; //break
       }
@@ -88,13 +99,23 @@ export class TodosComponent implements OnInit {
     );//foreach
   }
 
+  /**
+   * metodo que introduce objetos en la bbdd y los pushea en el array en primera posicion
+   */
   nuevoTodo () : void{
     console.log('titulo' + this.nuevoTitle);
     let nuevoTodo = new Todo(this.nuevoTitle);
     this.todos.unshift(nuevoTodo);
     this.nuevoTitle=''; 
     
-    this.todosService.nuevoTodo(nuevoTodo);
+    this.todosService.postTodo(nuevoTodo).
+    subscribe(
+      (data:any) =>{
+        console.log('Post Todo %o', data);
+      }, error => {
+        console.log(`error de post ${error}`);
+      }
+    );
     
   }
 }

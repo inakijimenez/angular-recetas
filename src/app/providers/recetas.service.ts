@@ -17,7 +17,7 @@ export class RecetasService {
   */
   getAll(): Receta[] {
 
-    
+    this.recetas = [];
     let receta;
 
     let jsonData = JSON.parse(MOCKS_RECETAS);

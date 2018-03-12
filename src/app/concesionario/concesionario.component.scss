@@ -5,10 +5,6 @@ ul.lista{
         background-color: red;
     }
 
-    .secundario {
-        background-color: yellow;
-    }
-
     li{
 
         list-style: none;
@@ -21,6 +17,13 @@ ul.lista{
             color:teal;
             background-color: white;
             cursor: pointer;
+        }
+
+        .glyphicon {
+            float: right;
+            padding: 2px;
+            text-align: center;
+            width: auto;
         }
     }
 }

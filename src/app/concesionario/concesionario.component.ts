@@ -40,7 +40,9 @@ export class ConcesionarioComponent implements OnInit {
   ngOnInit() {
 
     console.log('ConcesionarioComponent ngOnInit');
-    this.coches = this.cochesService.getAll();
+    this.coches = [];
+    //this.coches = this.cochesService.getAll(); //coge coches de mocks coches
+    this.getCoches();
   }
 
   recibirCoche(e) {
@@ -79,5 +81,47 @@ export class ConcesionarioComponent implements OnInit {
       }
     }
     //console.log(this.comparador);
+  }
+
+  //Metodo para conseguir los coches del servicio rest
+  getCoches(){
+    this.coches = [];
+    this.cochesService.getCochesRest().subscribe(
+      data => {
+        this.mapear(data);
+      }, error => {
+        console.log('getCoches error %o', error);
+      }
+    );
+  }
+
+  //Introduce los datos del observable en el array
+  mapear(data){
+    console.log('Mapear coches');
+    data.forEach(el => {
+      this.coches.push(el);
+    });
+    console.log('Coches mapeados %a', this.coches);
+  }
+
+  cocheCreadoEvent(e){
+    console.log('Concesionario cocheCreadoEvent');
+    this.coches = [];
+    //this.coches = this.cochesService.getAll(); //coge coches de mocks coches
+    this.getCoches();
+    console.log('Coches evento %a', this.coches);
+  }
+
+  deleteCoche(i){
+    console.log('ConcesionarioComponent deleteCoche');
+
+    this.cochesService.deleteCocheRest(this.coches[i])
+    .subscribe(
+      data =>{
+        console.log('Deleted %o', data);
+        this.getCoches();
+      }
+    );
+
   }
 }

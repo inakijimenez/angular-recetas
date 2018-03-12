@@ -14,7 +14,7 @@ export class Coche {
 
     constructor(marca: string, modelo: string,  version:string, foto:string, puertas:number, caballos:number, consumo:number ) {
 
-        this.id = -1;
+        //this.id = -1; //si no se inicializa el json.server le asigan un valor autogenerado
         this.marca = marca;
         this.modelo= modelo;
         this.version = (version)? version : '';

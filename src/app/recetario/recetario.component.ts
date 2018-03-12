@@ -17,12 +17,14 @@ export class RecetarioComponent implements OnInit {
   constructor( public recetasService: RecetasService) {
 
     console.log('Recetariocomponent contructor');
+    this.recetas = [];
     
     
   }
 
   ngOnInit() {
     console.log('Recetario ngOnInit');
+    this.recetas = [];
     this.recetas = this.recetasService.getAll();
     //console.log('recetario recetas %o',this.recetas);
     this.recetaSeleccionada = this.recetas[0] || new Receta (-1, '', '', '', '', 0, false, ['']);

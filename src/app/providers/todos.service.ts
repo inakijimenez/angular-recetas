@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Todo } from '../model/todo';
 
 const END_POINT = 'http://localhost:3000';
 
@@ -18,14 +19,15 @@ export class TodosService {
     return this.http.get(url);
   }
 
-  nuevoTodo (todo){
+  postTodo (todo: Todo): Observable<any>{
     let url = END_POINT + '/todos/';
-    console.log(todo);
-    this.http.post(url, todo).
-    subscribe(
-      (data:any) =>{
-        console.log(data);
-      }
-    );
+    
+    return this.http.post(url, todo);
+  }
+
+  deleteTodo(todo: Todo): Observable<any>{
+    let url = END_POINT + '/todos/' + todo.id;
+
+    return this.http.delete(url);
   }
 }
