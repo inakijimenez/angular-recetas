@@ -1,0 +1,24 @@
+NUEVO PROYECTO
+
+	ng new [nombre proyecto] --style=scss
+	cd nuevo proyecto
+	ng serve --open
+
+
+APP.MODULE.TS
+      	import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+	import { HttpClientModule } from '@angular/common/http';
+
+	
+	imports [FormsModule, 
+		ReactiveFormsModule,
+		HttpClientModule 
+		]//Estos hay que meterlos a mano
+	
+	providers:[SERVICIOS] //Hay que meterlos a mano
+
+
+src/app/
+	providers/ --> servicios
+	models/ --> clases
+	
